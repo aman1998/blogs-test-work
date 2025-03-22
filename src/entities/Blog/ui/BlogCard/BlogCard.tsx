@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import NextImage from "next/image";
 
 import { IBlog } from "@/src/entities/Blog/model/types";
+import { ROUTES } from "@/src/shared/config/routes";
 
 interface Props {
   blog: IBlog;
@@ -16,11 +17,7 @@ const BlogCard: React.FC<Props> = ({ blog }) => {
   const router = useRouter();
 
   return (
-    <Card
-      isPressable
-      className="py-4"
-      onPress={() => router.push(`/blog/${blog.id}`)}
-    >
+    <Card isPressable onPress={() => router.push(ROUTES.blogId(blog.id))}>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">{blog.title}</p>
         {/*<small className="text-default-500">User ID {blog.userId}</small>*/}

@@ -16,7 +16,11 @@ const Page: React.FC<Props> = async ({ params }) => {
 
   if (!blog) return notFound();
 
-  return <BlogInfo blog={blog as IBlog} />;
+  return (
+    <div className="max-w-4xl mx-auto shadow-lg rounded-lg p-6 space-y-6">
+      <BlogInfo blog={blog as IBlog} />
+    </div>
+  );
 };
 
 export default Page;

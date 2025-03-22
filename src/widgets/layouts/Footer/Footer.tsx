@@ -8,8 +8,8 @@ const Footer = () => (
       href="https://github.com/aman1998"
       title="heroui.com homepage"
     >
-      <span className="text-default-600">Powered by</span>
-      <p className="text-primary">Amangeldi</p>
+      <span className="text-default-600">Powered by </span>
+      <p>Amangeldi</p>
     </Link>
   </footer>
 );

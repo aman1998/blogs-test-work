@@ -1,5 +1,6 @@
 import "@/src/shared/styles/globals.css";
 import { Metadata, Viewport } from "next";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import Navbar from "../widgets/layouts/Navbar";
 
@@ -32,15 +33,17 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body className={fontSans.variable}>
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </Providers>
+        <NuqsAdapter>
+          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+            <div className="relative flex flex-col h-screen">
+              <Navbar />
+              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </Providers>
+        </NuqsAdapter>
       </body>
     </html>
   );
