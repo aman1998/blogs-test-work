@@ -6,6 +6,7 @@ import { Avatar } from "@heroui/avatar";
 import { useRouter } from "next/navigation";
 
 import { ROUTES } from "@/src/shared/config/routes";
+import { IUser } from "@/src/entities/User/model/types";
 
 interface Props {
   user: IUser;

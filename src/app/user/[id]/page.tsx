@@ -5,7 +5,7 @@ import UserCard from "@/src/entities/User/ui/UserCard";
 import { IUser } from "@/src/entities/User/model/types";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const fetchUserData = async (id: string) => {
@@ -21,7 +21,8 @@ const fetchUserData = async (id: string) => {
 const fetchUserDataCached = cache(fetchUserData);
 
 export async function generateMetadata({ params }: Props) {
-  const data = await fetchUserDataCached(params.id);
+  const { id } = await params;
+  const data = await fetchUserDataCached(id);
 
   if (!data) {
     return {
@@ -46,13 +47,14 @@ export async function generateMetadata({ params }: Props) {
     creator: authorName,
     publisher: authorName,
     alternates: {
-      canonical: `/user/${params.id}`,
+      canonical: `/user/${user.id}`,
     },
   };
 }
 
-const Page: React.FC<Props> = async ({ params }) => {
-  const data = await fetchUserDataCached(params.id);
+const Page = async ({ params }: Props) => {
+  const { id } = await params;
+  const data = await fetchUserDataCached(id);
 
   if (!data) return notFound();
 
