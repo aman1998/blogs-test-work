@@ -33,7 +33,7 @@ const BlogsList: React.FC<Props> = ({ blogs: initialBlogs }) => {
 
   return (
     <section>
-      <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
+      <div className="gap-2 grid grid-cols-1 sm:grid-cols-4">
         {displayedBlogs.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}
