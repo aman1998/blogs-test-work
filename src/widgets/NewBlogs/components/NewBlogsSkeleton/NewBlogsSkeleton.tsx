@@ -15,7 +15,7 @@ const NewBlogsSkeleton = () => (
     <div className="gap-2 grid grid-cols-1 sm:grid-cols-4">
       {Array.from({ length: 4 }, (_, i) => (
         <Skeleton key={i} className="rounded-lg">
-          <div className="h-32 rounded-lg bg-default-300" />
+          <div className="h-64 rounded-lg bg-default-300" />
         </Skeleton>
       ))}
     </div>

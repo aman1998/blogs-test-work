@@ -17,9 +17,9 @@ const BlogInfo: React.FC<Props> = ({ blog }) => (
         alt={blog.title}
         as={NextImage}
         className="z-0 m-auto object-cover"
-        height={320}
+        height={250}
         src="https://heroui.com/images/album-cover.png"
-        width={300}
+        width={250}
       />
       <h1 className="text-2xl m-auto font-bold text-center">{blog.title}</h1>
     </div>
