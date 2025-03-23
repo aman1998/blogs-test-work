@@ -1,6 +1,5 @@
 import "@/src/shared/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import Navbar from "../widgets/layouts/Navbar";
 
@@ -10,7 +9,7 @@ import { fontSans } from "@/config/fonts";
 import Footer from "@/src/widgets/layouts/Footer";
 
 export const metadata: Metadata = {
-  title: "Amangeldi",
+  title: "Amangeldi test work",
   description: "Beautiful Amangeldi posts.",
   icons: {
     icon: "/favicon.ico",
@@ -33,17 +32,15 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body className={fontSans.variable}>
-        <NuqsAdapter>
-          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-            <div className="relative flex flex-col h-screen">
-              <Navbar />
-              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </Providers>
-        </NuqsAdapter>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <div className="relative flex flex-col h-screen">
+            <Navbar />
+            <main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );

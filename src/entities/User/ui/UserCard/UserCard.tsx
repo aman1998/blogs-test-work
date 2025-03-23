@@ -16,7 +16,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
   return (
     <Card
       isPressable
-      className="max-w-[340px]"
+      className="w-full"
       onPress={() => router.push(ROUTES.userId(user.id))}
     >
       <CardHeader className="justify-between">

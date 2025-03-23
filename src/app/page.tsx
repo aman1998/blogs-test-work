@@ -1,13 +1,24 @@
+import React from "react";
+
+import NewBlogs from "../widgets/NewBlogs";
+
 import HeroInfo from "@/src/widgets/HeroInfo";
-import NewBlogsList from "@/src/widgets/NewBlogsList";
 import BestUsers from "@/src/widgets/BestUsers";
+import NewBlogsSkeleton from "@/src/widgets/NewBlogs/components/NewBlogsSkeleton";
+import BestUsersSkeleton from "@/src/widgets/BestUsers/components/BestUsersSkeleton";
 
 const Home = async () => {
   return (
     <div>
       <HeroInfo />
-      <BestUsers />
-      <NewBlogsList />
+      <div className="flex flex-col gap-10">
+        <React.Suspense fallback={<BestUsersSkeleton />}>
+          <BestUsers />
+        </React.Suspense>
+        <React.Suspense fallback={<NewBlogsSkeleton />}>
+          <NewBlogs />
+        </React.Suspense>
+      </div>
     </div>
   );
 };

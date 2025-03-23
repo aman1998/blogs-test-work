@@ -4,6 +4,7 @@ import { Link } from "@heroui/link";
 import UserCard from "../../entities/User/ui/UserCard";
 
 import { ROUTES } from "@/src/shared/config/routes";
+import { IUser } from "@/src/entities/User/model/types";
 
 const BestUsers: React.FC = async () => {
   const res = await fetch(
@@ -12,7 +13,7 @@ const BestUsers: React.FC = async () => {
   const users: IUser[] = await res.json();
 
   return (
-    <div>
+    <section>
       <div className="flex justify-between">
         <h4 className="font-extrabold text-2xl mb-3">Best users</h4>
         <Link color="foreground" href={ROUTES.user}>
@@ -24,7 +25,7 @@ const BestUsers: React.FC = async () => {
           <UserCard key={user.id} user={user} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

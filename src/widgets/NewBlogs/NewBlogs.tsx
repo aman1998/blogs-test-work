@@ -7,7 +7,7 @@ import { IBlog } from "@/src/entities/Blog/model/types";
 import BlogCard from "@/src/entities/Blog/ui/BlogCard";
 import { ROUTES } from "@/src/shared/config/routes";
 
-const NewBlogsList: React.FC = async () => {
+const NewBlogs: React.FC = async () => {
   const res = await fetch(
     "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=4",
   );
@@ -32,4 +32,4 @@ const NewBlogsList: React.FC = async () => {
   );
 };
 
-export default NewBlogsList;
+export default NewBlogs;

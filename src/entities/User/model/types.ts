@@ -1,4 +1,4 @@
-interface IUser {
+export interface IUser {
   id: number;
   name: string;
   username: string;
@@ -9,7 +9,7 @@ interface IUser {
   company: ICompany;
 }
 
-interface IAddress {
+export interface IAddress {
   street: string;
   suite: string;
   city: string;
@@ -20,7 +20,7 @@ interface IAddress {
   };
 }
 
-interface ICompany {
+export interface ICompany {
   name: string;
   catchPhrase: string;
   bs: string;

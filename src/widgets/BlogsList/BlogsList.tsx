@@ -26,22 +26,20 @@ const BlogsList: React.FC<Props> = ({ blogs: initialBlogs }) => {
   const loadMore = useBlogsStore(loadMoreBlogsSelector);
 
   React.useEffect(() => {
-    if (blogs.length) return;
-
     setBlogs(initialBlogs);
   }, [initialBlogs, setBlogs]);
 
   const displayedBlogs = blogs.length > 0 ? blogs : initialBlogs;
 
   return (
-    <div>
+    <section>
       <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
         {displayedBlogs.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}
       </div>
 
-      {hasMore && (
+      {hasMore && !!blogs.length && (
         <div className="mt-4 w-full flex justify-center">
           <Button
             className="p-2  disabled:bg-gray-400"
@@ -52,7 +50,7 @@ const BlogsList: React.FC<Props> = ({ blogs: initialBlogs }) => {
           </Button>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

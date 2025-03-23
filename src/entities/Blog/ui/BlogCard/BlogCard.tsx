@@ -20,8 +20,6 @@ const BlogCard: React.FC<Props> = ({ blog }) => {
     <Card isPressable onPress={() => router.push(ROUTES.blogId(blog.id))}>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">{blog.title}</p>
-        {/*<small className="text-default-500">User ID {blog.userId}</small>*/}
-        {/*<h4 className="font-bold text-large">{blog.body}</h4>*/}
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image

@@ -2,16 +2,32 @@
 
 import { Input } from "@heroui/input";
 import { useDebouncedCallback } from "use-debounce";
-import { useQueryState } from "nuqs";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { SearchIcon } from "@/src/shared/icons/icons";
 
 const SearchBlogs = () => {
-  const [query, setQuery] = useQueryState("query", { defaultValue: "" });
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
   const handleSearch = useDebouncedCallback((value: string) => {
-    setQuery(value);
+    const params = new URLSearchParams(searchParams);
+
+    if (value) {
+      params.set("query", value);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
   }, 300);
+
+  const handleClear = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete("query");
+    replace(pathname);
+  };
 
   return (
     <Input
@@ -20,7 +36,7 @@ const SearchBlogs = () => {
         inputWrapper: "bg-default-100",
         input: "text-sm",
       }}
-      defaultValue={query}
+      defaultValue={searchParams.get("query")?.toString()}
       labelPlacement="outside"
       placeholder="Search..."
       startContent={
@@ -30,7 +46,7 @@ const SearchBlogs = () => {
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
-      onClear={() => setQuery("")}
+      onClear={handleClear}
     />
   );
 };

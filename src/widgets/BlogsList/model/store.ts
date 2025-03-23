@@ -10,6 +10,7 @@ export interface IBlogsStore {
   page: number;
   hasMore: boolean;
   total: number;
+
   loadMoreBlogs: () => Promise<void>;
 }
 
